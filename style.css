@@ -1,0 +1,1085 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alata&family=Archivo+Black&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Goldman:wght@400;700&family=Martel+Sans:wght@200;300;400;600;700;800;900&family=Meie+Script&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Oranienbaum&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Martel Sans', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(120deg, #2c1a55, #3e5d75, #022c43, #5b2a86);
+    background-size: 400% 400%;
+    animation: gradientMove 15s ease infinite;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 80px;
+}
+
+/* Background Video Styling */
+#bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+    opacity: 1;
+}
+
+/* Make sure your content appears above the video */
+.home-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+}
+
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ---------- NAVBAR ---------- */
+nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 60px;
+    background: linear-gradient(to right, #0b141a, #15232e);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 1.8rem;
+    color: cyan;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* LOGO (clean, no glow) */
+.logo {
+    font-size: 1.6rem;
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-shadow: none;
+    font-family: 'Orbitron', sans-serif;
+}
+
+
+/* MENU */
+#menu {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+}
+
+/* MENU LINKS */
+#menu li a {
+    color: #e0e0e0;
+    text-decoration: none;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    position: relative;
+    transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Underline Effect */
+#menu li a::after {
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0%;
+    height: 2px;
+    background: cyan;
+    box-shadow: 0 0 8px rgba(0,255,255,0.6);
+    transition: width 0.3s ease;
+}
+
+/* Hover: color + glow + slight rise */
+#menu li a:hover {
+    color: cyan;
+    transform: translateY(-2px);
+    text-shadow: 0 0 8px cyan;
+}
+
+#menu li a:hover::after {
+    width: 100%;
+}
+
+/* Active Page Link */
+#menu li a.active {
+    color: cyan;
+    text-shadow: 0 0 10px cyan;
+}
+
+#menu li a.active::after {
+    width: 100%;
+}
+
+
+/* 🔹 Logout Button (Desktop View) */
+.logout-btn {
+    background: linear-gradient(90deg, cyan, #00ffff);
+    border: none;
+    color: black;
+    padding: 8px 18px;
+    font-family: 'Orbitron', sans-serif;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: 600;
+}
+
+.logout-btn:hover {
+    box-shadow: 0 0 15px cyan;
+    transform: scale(1.05);
+}
+
+/* ---------- NAVBAR IITBBS LOGO (Visible, Clean, Larger) ---------- */
+.iitbbs-logo img {
+    height: 54px;
+    width: auto;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    filter: none !important;
+    opacity: 0.95;
+}
+
+.iitbbs-logo:hover img {
+    transform: scale(1.05);
+    opacity: 1;
+}
+
+/* ---------------------------------------------------- */
+/* ---------- NEW INTRO SECTIONS (PRAVAAH & THEME) ---------- */
+/* ---------------------------------------------------- */
+
+.intro-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 3rem 0 1rem;
+}
+
+.intro-heading {
+    /* Style matching the image: large, neon, uppercase */
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    color: #00ffff;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-shadow: 
+        0 0 10px #00ffff;
+      
+    margin-bottom: 2rem;
+    letter-spacing: 4px;
+}
+
+.theme-heading-glow {
+     /* Adjust size for the second heading to fit the line better */
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: 2px;
+}
+
+
+.intro-text {
+    /* Style matching the image: centered, white glow text */
+    width: 75%; 
+    max-width: 900px;
+    font-size: clamp(1rem, 1.2vw, 1.1rem);
+    line-height: 1.8;
+    color: #fff;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.4); /* subtle white glow */
+    padding: 0 1rem 2rem;
+}
+
+
+/* ---------- HIGHLIGHTS SECTION ---------- */
+.highlights {
+    width: 100%;
+    overflow: hidden;
+    text-align: center;
+    margin: 7rem -1rem;
+}
+
+.section-title {
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    margin-bottom: 2rem;
+    text-shadow: 0 0 15px cyan;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    font-family: 'Orbitron', sans-serif;
+}
+
+
+.highlights-carousel {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 0;
+}
+
+/* 🔹 Seamless Infinite Scroll (No Gaps) */
+.slider-track {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 30px;
+    width: max-content;
+    animation: scrollSeamless 30s linear infinite;
+    will-change: transform;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+/* Smooth continuous animation */
+@keyframes scrollSeamless {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Hover pause for desktop */
+.highlights-carousel:hover .slider-track {
+    animation-play-state: paused;
+}
+
+/* Ensure slides don't shrink or stretch */
+.slide {
+    flex-shrink: 0;
+    width: 320px;
+    height: 200px;
+    border-radius: 18px;
+    overflow: hidden;
+    position: relative;
+    border: 2px solid cyan;
+    box-shadow: 0 0 12px rgba(0,255,255,0.4);
+    transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+    animation: pulseGlow 3s ease-in-out infinite;
+}
+
+/* Image inside highlight */
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+    display: block;
+    will-change: transform;
+    transition: transform 0.4s ease;
+}
+
+/* Neon edge highlight */
+.slide:hover {
+    transform: scale(1.05);
+    border-color: #00ffff;
+    box-shadow: 0 0 20px #00ffff, 0 0 40px rgba(0,255,255,0.6);
+}
+
+.slide:hover img {
+    transform: scale(1.1);
+}
+
+/* Caption overlay */
+.slide::after {
+    content: attr(data-title);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 0;
+    font-size: 1.1rem;
+    background: rgba(0, 0, 0, 0.6);
+    color: cyan;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+    border-radius: 0 0 18px 18px;
+}
+
+.slide:hover::after {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Subtle breathing border glow */
+@keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 10px rgba(0,255,255,0.3); }
+    50% { box-shadow: 0 0 20px rgba(0,255,255,0.8); }
+}
+
+/* ---------- CALENDAR + FEED ---------- */
+.calendar-title {
+    text-align: center;
+    font-size: clamp(1.6rem, 3vw, 2.5rem);
+    color: cyan;
+    text-shadow: 0 0 15px cyan;
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+
+.calendar-title::after {
+    content: "";
+    display: block;
+    width: 120px;
+    height: 3px;
+    background: cyan;
+    margin: 10px auto 0;
+    box-shadow: 0 0 10px cyan;
+    animation: underlineGlow 2.5s ease-in-out infinite alternate;
+}
+
+.container {
+    display: flex;
+    width: 90%;
+    max-width: 1400px; /* Limit max width for better centering */
+    height: 110vh;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 0 40px rgba(0,0,0,0.4);
+    backdrop-filter: blur(10px);
+    margin: 0 auto 3rem auto; /* Center the entire container */
+}
+
+/* Calendar styles */
+.calendar-container {
+    width: 60%;
+    padding: 25px;
+    background: rgba(0,0,0,0.4);
+    border-right: 2px solid rgba(255,255,255,0.2);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.header button {
+    background: transparent;
+    color: white;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.header button:hover { color: cyan; }
+
+#monthYear {
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px cyan;
+}
+
+.days-of-week {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    margin-bottom: 12px;
+    color: #ddd;
+    font-size: 1.05rem;
+}
+
+/* Calendar Day Grid */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 12px;
+    align-items: center;
+    padding: 10px 5px;
+}
+
+.day {
+    width: 100%;
+    aspect-ratio: 1 / 1; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.08);
+    color: white;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.day:hover { background: rgba(255,255,255,0.25); transform: scale(1.05); }
+.today { background: #00ffff33; border: 1px solid #00ffff; }
+.selected { background: #00ffff55; box-shadow: 0 0 12px #00ffff; }
+
+
+/* Feed section */
+.feed-container {
+    width: 40%;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    flex-direction: column;
+    padding: 15px 20px;
+    overflow: hidden;
+}
+
+.feed-title {
+    text-align: center;
+    color: cyan;
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px cyan;
+}
+
+.feed-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow-y: auto;
+    padding-right: 5px;
+    flex: 1;
+    min-height: 0;
+}
+
+.feed-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 12px 16px;
+    transition: background 0.3s ease, transform 0.3s ease;
+    flex-shrink: 0;
+    position: relative;
+    min-height: 70px;
+    cursor: pointer;
+}
+
+.feed-item:hover {
+    background: rgba(0, 255, 255, 0.15);
+    transform: scale(1.02);
+    z-index: 2;
+}
+
+.feed-item img {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    object-fit: cover;
+    border: 2px solid #00ffff80;
+}
+
+.feed-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.feed-details h4 {
+    margin-bottom: 4px;
+    color: #fff;
+    font-size: 1rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.feed-details p {
+    color: #bbb;
+    font-size: 0.85rem;
+    line-height: 1.2;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.feed-time {
+    font-size: 0.8rem;
+    color: #aaa;
+    min-width: 40px;
+    text-align: right;
+}
+
+.feed-placeholder {
+    text-align: center;
+    color: #bbb;
+    margin-top: 20%;
+}
+
+/* Scrollbar */
+.feed-list::-webkit-scrollbar {
+    width: 6px;
+}
+.feed-list::-webkit-scrollbar-thumb {
+    background: rgba(0,255,255,0.5);
+    border-radius: 10px;
+}
+
+/* ---------- AFTERMOVIE ---------- */
+.aftermovie-section {
+    text-align: center;
+    margin: 1rem 0 5rem 0;
+    position: relative;
+    width: 100%;
+}
+
+.aftermovie-section h2 {
+    font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+    color: #00ffff;
+    text-shadow: 0 0 10px rgba(0,255,255,0.7);
+    margin-bottom: 1.5rem;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+.aftermovie {
+    position: relative;
+    width: 70%;
+    height: 75vh;
+    margin: 0 auto;
+    border-radius: 25px;
+    border: 2px solid cyan;
+    background: rgba(0, 0, 0, 0.9);
+    box-shadow: 0 0 30px rgba(0,255,255,0.5), inset 0 0 20px rgba(0,255,255,0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: all 0.5s ease;
+}
+
+.aftermovie:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 50px rgba(0,255,255,0.7);
+}
+
+.video-wrapper {
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: black;
+}
+
+.video-wrapper video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 25px;
+    display: block;
+}
+
+.aftermovie:hover .video-wrapper {
+    box-shadow: 0 0 40px rgba(0,255,255,0.6);
+    transform: scale(1.01);
+    transition: all 0.4s ease;
+}
+/* ---------- VIDEO SWITCH BUTTONS ---------- */
+.video-switch {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 2rem;
+}
+
+.video-switch button {
+    background: none;
+    border: none;
+    color: #bfbfbf;
+    font-size: 1.1rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.video-switch button::after {
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0%;
+    height: 2px;
+    background: cyan;
+    box-shadow: 0 0 8px rgba(0,255,255,0.6);
+    transition: width 0.3s ease;
+}
+
+.video-switch button:hover {
+    color: cyan;
+    transform: translateY(-2px);
+}
+
+.video-switch button:hover::after {
+    width: 100%;
+}
+
+.video-switch button.active {
+    color: cyan;
+}
+
+.video-switch button.active::after {
+    width: 100%;
+}
+
+/* ---------- SOCIAL SECTION ---------- */
+.social-section {
+    width: 90%;
+    margin: 6rem auto;
+    text-align: center;
+}
+
+.social-section h2 {
+    font-size: clamp(1.3rem, 3vw, 2rem);
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 10px cyan;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+
+.social-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    justify-items: center;
+}
+
+.social-card {
+    width: 220px;
+    height: 220px;
+    background: linear-gradient(145deg, rgba(255,255,255,0.15), rgba(0,0,0,0.4));
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s ease;
+}
+
+.social-card:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 35px rgba(0,255,255,0.5);
+    background: rgba(0,255,255,0.15);
+}
+
+.inner-card {
+    background: black;
+    width: 80%;
+    height: 80%;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.inner-card h3 { font-size: 1.8rem; color: #fff; }
+.inner-card p { margin-top: 10px; color: #ccc; }
+
+/* ---------- FOOTER ---------- */
+footer {
+    background: #0b0b0b;
+    color: #ddd;
+    padding: 3rem 2rem 1rem;
+    width: 100%;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto 2rem;
+    gap: 3rem; 
+}
+
+/* Left section */
+.footer-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer-logo {
+    width: 140px;
+}
+
+.register-btn {
+    background: linear-gradient(90deg, #6a5acd, #00ffff);
+    text-decoration: none;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+}
+
+.register-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 12px rgba(0,255,255,0.5);
+    text-decoration: none;
+}
+
+/* Footer links */
+.footer-links {
+    display: flex;
+    justify-content: space-between; 
+    gap: 3rem; 
+    flex: 2;
+    flex-wrap: wrap;
+    min-width: 400px;
+    text-align: left; 
+}
+
+.footer-column {
+    flex: 1 1 auto; 
+    min-width: 130px; 
+}
+
+.footer-column h3 { 
+    color: #fff; 
+    margin-bottom: 1rem; 
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+}
+.footer-column ul { 
+    list-style: none; 
+    padding: 0; 
+}
+.footer-column ul li { 
+    margin: 8px 0; 
+}
+.footer-column ul li a {
+    text-decoration: none;
+    color: #bbb;
+    transition: color 0.3s;
+    font-size: 0.95rem;
+}
+.footer-column ul li a:hover { color: cyan; }
+
+/* Social icons */
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem; 
+    margin-bottom: 1rem; 
+}
+
+.footer-social a {
+    color: cyan;
+    font-size: 1.8rem; 
+    transition: all 0.3s ease;
+}
+
+.footer-social a:hover {
+    color: white;
+    transform: scale(1.1);
+}
+
+.footer-line {
+    width: 90%;
+    margin: 0 auto 1.2rem;
+    border: none;
+    height: 1px;
+    background: rgba(255,255,255,0.2);
+}
+
+.footer-bottom {
+    color: #aaa;
+    font-size: 0.9rem;
+    padding-bottom: 0.5rem;
+}
+
+.footer-bottom span {
+    color: cyan;
+    font-weight: 600;
+}
+
+/* 📱 OPTIMIZED MOBILE DESIGN — PRAVAAH (max-width: 900px) */
+@media (max-width: 900px) {
+
+    /* ---------- NAVBAR ---------- */
+    nav {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 25px;
+    }
+
+    .logo {
+        font-size: 1.4rem;
+    }
+
+    .menu-toggle {
+        display: block;
+        color: cyan;
+        font-size: 1.8rem;
+        cursor: pointer;
+    }
+
+    #menu {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        background: rgba(0, 0, 0, 0.95);
+        border-top: 1px solid cyan;
+        box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
+        padding: 20px 0;
+        z-index: 999;
+    }
+
+    #menu.active {
+        display: flex;
+    }
+
+    #menu li {
+        width: 100%;
+        text-align: center;
+        padding: 0;
+    }
+
+    #menu li a {
+        font-size: 1rem;
+        padding: 10px;
+        display: block;
+    }
+
+    #menu li a::after {
+        content: none;
+    }
+    #menu li a.active {
+        background: rgba(0,255,255,0.1);
+    }
+
+    .logout-btn {
+        display: none;
+    }
+    .mobile-only {
+        display: block;
+    }
+    
+    .iitbbs-logo img {
+        height: 46px;
+    }
+    
+    /* ---------- Intro Sections ---------- */
+    .intro-heading {
+        font-size: clamp(1.8rem, 8vw, 2.5rem);
+        padding: 1.5rem 1rem 0.5rem;
+        letter-spacing: 2px;
+    }
+    .theme-heading-glow {
+        font-size: clamp(1.6rem, 7vw, 2.2rem);
+        letter-spacing: 1.5px;
+    }
+
+    .intro-text {
+        width: 90%;
+        padding: 1rem;
+        font-size: 0.9rem;
+    }
+
+
+    /* ---------- CALENDAR SECTION ---------- */
+    .calendar-title {
+        font-size: 1.6rem;
+        margin-top: 5rem;
+        letter-spacing: 1.5px;
+    }
+
+    .container {
+        flex-direction: column;
+        width: 92%;
+        height: auto;
+        margin: 0 auto 3rem auto;
+    }
+
+    .calendar-container {
+        width: 100%;
+        border-right: none;
+        border-bottom: 2px solid rgba(255,255,255,0.2);
+        padding: 20px 10px;
+    }
+
+    .feed-container {
+        width: 100%;
+        border: none;
+        min-height: 35vh;
+        padding: 15px 20px;
+    }
+
+    #monthYear {
+        font-size: 1.4rem;
+    }
+
+    .calendar-grid {
+        gap: 6px;
+    }
+
+    .day {
+        max-width: 42px;
+        max-height: 42px;
+        font-size: 0.75rem;
+        justify-self: center; 
+    }
+
+    .days-of-week {
+        font-size: 0.75rem;
+    }
+
+    /* ---------- HIGHLIGHTS ---------- */
+    .highlights {
+        margin-top: 3rem;
+        padding: 0;
+    }
+
+    .slider-track {
+        animation: scrollSeamless 15s linear infinite;
+    }
+
+    .slide {
+        width: 250px;
+        height: 180px;
+        margin: 0 auto;
+    }
+
+    /* ---------- AFTERMOVIE ---------- */
+    .aftermovie {
+        width: 92%;
+        height: 58vw;
+    }
+
+    .video-switch {
+        gap: 20px;
+        font-size: 0.9rem;
+    }
+
+    /* ---------- SOCIAL SECTION ---------- */
+    .social-section {
+        width: 95%;
+        margin-top: 5rem;
+    }
+
+    .social-cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .social-card {
+        width: 45%;
+        height: 160px;
+    }
+
+    /* ---------- FOOTER MOBILE REVISIONS ---------- */
+    footer {
+        padding: 2.5rem 1rem 1.5rem;
+    }
+    .footer-container {
+        flex-direction: column; 
+        align-items: center;
+        width: 95%;
+        gap: 1rem;
+    }
+    .footer-left {
+        flex: 1 1 100%;
+        align-items: center;
+        margin-bottom: 0.5rem;
+    }
+
+    .footer-links {
+        flex-direction: row; 
+        justify-content: space-around;
+        width: 100%;
+        gap: 1.5rem;
+        text-align: center;
+    }
+    .footer-social {
+        margin-top: 1rem;
+        gap: 1rem;
+    }
+    .footer-bottom p {
+        font-size: 0.8rem;
+    }
+}
+
+/* 📱 Extra small devices (below 600px) */
+@media (max-width: 600px) {
+    .footer-links {
+        /* Stacks link columns on very small screens */
+        flex-direction: column;
+        gap: 1.5rem; 
+        align-items: center;
+        text-align: center;
+    }
+    
+    .footer-column {
+        min-width: 100%;
+    }
+
+    .footer-column ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px 15px;
+    }
+
+    .footer-bottom p {
+        font-size: 0.75rem;
+    }
+    
+    .social-card {
+        width: 100%;
+        max-width: 300px;
+    }
+}
