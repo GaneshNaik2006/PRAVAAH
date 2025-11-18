@@ -11,14 +11,16 @@
 
 body {
     min-height: 100vh;
-    background: linear-gradient(120deg, #2c1a55, #3e5d75, #022c43, #5b2a86);
+       background: linear-gradient(120deg, #2c1a55, #3e5d75, #022c43, #5b2a86);
     background-size: 400% 400%;
     animation: gradientMove 15s ease infinite;
     color: #fff;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 80px;
+      background-color: #0b0b0b;
+    /* Keeps space for fixed navbar */
+    padding-top: 80px; 
 }
 
 /* Background Video Styling */
@@ -26,7 +28,7 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     object-fit: cover;
     z-index: -1;
@@ -50,6 +52,7 @@ body {
 /* ---------- NAVBAR ---------- */
 nav {
     width: 100%;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -181,7 +184,6 @@ nav {
 }
 
 .intro-heading {
-    /* Style matching the image: large, neon, uppercase */
     font-size: clamp(2.5rem, 6vw, 4rem);
     color: #00ffff;
     font-family: 'Orbitron', sans-serif;
@@ -195,21 +197,26 @@ nav {
 }
 
 .theme-heading-glow {
-     /* Adjust size for the second heading to fit the line better */
     font-size: clamp(2rem, 4vw, 3rem);
     letter-spacing: 2px;
 }
 
-
+/* 🟢 TRANSPARENT BACKGROUND & PADDING */
 .intro-text {
-    /* Style matching the image: centered, white glow text */
     width: 75%; 
     max-width: 900px;
     font-size: clamp(1rem, 1.2vw, 1.1rem);
     line-height: 1.8;
     color: #fff;
-    text-shadow: 0 0 8px rgba(255, 255, 255, 0.4); /* subtle white glow */
-    padding: 0 1rem 2rem;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.4); 
+    
+    /* NEW STYLES */
+    padding: 3rem; 
+    margin: 0 1rem 2rem; 
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    border-radius: 15px; 
+    backdrop-filter: blur(4px); 
+    border: 1px solid rgba(0, 255, 255, 0.2); 
 }
 
 
@@ -407,6 +414,10 @@ nav {
     margin-bottom: 12px;
     color: #ddd;
     font-size: 1.05rem;
+}
+.logout-btn a{
+    text-decoration: none;
+    color:black;
 }
 
 /* Calendar Day Grid */
@@ -712,13 +723,20 @@ nav {
 
 /* ---------- FOOTER ---------- */
 footer {
-    background: #0b0b0b;
+   
     color: #ddd;
     padding: 3rem 2rem 1rem;
-    width: 100%;
+  
     text-align: center;
     border-top: 1px solid rgba(255,255,255,0.1);
+    width: 100%;
+    background: #0b0b0b;
+    display: block;
+    position: relative;
+    z-index: 5;
 }
+
+
 
 .footer-container {
     display: flex;
@@ -839,31 +857,58 @@ footer {
     color: cyan;
     font-weight: 600;
 }
+.mobile-only{
+    display: none;
+}
 
 /* 📱 OPTIMIZED MOBILE DESIGN — PRAVAAH (max-width: 900px) */
 @media (max-width: 900px) {
 
-    /* ---------- NAVBAR ---------- */
+    /* ---------- NAVBAR FIXES ---------- */
     nav {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
         padding: 12px 25px;
+        /* Matches the height of the elements */
+        height: 70px; 
     }
 
     .logo {
         font-size: 1.4rem;
+        flex-grow: 1; /* Allows logo to push the menu right */
+        text-align: center; /* Center logo when menu is closed */
     }
-
+    
+    /* 🟢 FIX: Hide the text links when the hamburger menu is visible */
+    #menu:not(.active) {
+        display: none;
+    }
+    
     .menu-toggle {
         display: block;
         color: cyan;
         font-size: 1.8rem;
         cursor: pointer;
+        order: 3; /* Move hamburger menu to the right */
+        position: relative; /* Ensure it stacks correctly */
+        z-index: 1001;
+    }
+    
+    /* 🟢 FIX: Ensure IITBBS logo is on the left and has high priority */
+    .iitbbs-logo {
+        order: 1;
+        margin-right: 10px;
     }
 
+    /* Adjust logo positioning for mobile to make space for the menu toggle */
+    nav .logo {
+        /* When collapsed, center the logo between IITBBS logo and hamburger */
+        margin-right: auto;
+        text-align: center;
+    }
+    
     #menu {
-        display: none;
         flex-direction: column;
         align-items: center;
         width: 100%;
@@ -900,9 +945,11 @@ footer {
         background: rgba(0,255,255,0.1);
     }
 
+    /* 🟢 FIX: Hide desktop logout button on mobile */
     .logout-btn {
         display: none;
     }
+    /* 🟢 FIX: Show mobile-only logout link */
     .mobile-only {
         display: block;
     }
@@ -969,7 +1016,8 @@ footer {
         max-width: 42px;
         max-height: 42px;
         font-size: 0.75rem;
-        justify-self: center; 
+        justify-self: center;
+        
     }
 
     .days-of-week {
@@ -1021,11 +1069,12 @@ footer {
         height: 160px;
     }
 
-    /* ---------- FOOTER MOBILE REVISIONS ---------- */
+    /* ---------- FOOTER MOBILE REVISIONS (900px) ---------- */
     footer {
         padding: 2.5rem 1rem 1.5rem;
     }
     .footer-container {
+        /* 🟢 FIX: Stack columns and center */
         flex-direction: column; 
         align-items: center;
         width: 95%;
@@ -1038,11 +1087,12 @@ footer {
     }
 
     .footer-links {
+        /* 🟢 FIX: Use space-around for balanced columns */
         flex-direction: row; 
         justify-content: space-around;
         width: 100%;
         gap: 1.5rem;
-        text-align: center;
+        text-align: left; /* Keep text left-aligned within columns */
     }
     .footer-social {
         margin-top: 1rem;
@@ -1055,23 +1105,36 @@ footer {
 
 /* 📱 Extra small devices (below 600px) */
 @media (max-width: 600px) {
+    /* 🟢 FIX: Ensure body padding for video coverage */
+    body {
+        padding-top: 70px;
+    }
+    
+    /* 🟢 FIX: Footer to match the clean stacked look */
     .footer-links {
-        /* Stacks link columns on very small screens */
         flex-direction: column;
         gap: 1.5rem; 
         align-items: center;
-        text-align: center;
+        text-align: center; 
     }
     
     .footer-column {
         min-width: 100%;
+        /* 🟢 FIX: Center content in single column view */
+        display: flex; 
+        flex-direction: column;
+        align-items: center;
     }
 
     .footer-column ul {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px 15px;
+        display: block; /* Change to block to make each link stack vertically */
+        text-align: center; 
+    }
+    
+    /* 🟢 FIX: Force list items in footer to stack */
+    .footer-column ul li {
+        margin: 5px 0; /* Add vertical spacing */
+        width: 100%; /* Take full width of parent */
     }
 
     .footer-bottom p {
